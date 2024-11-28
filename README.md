@@ -60,10 +60,8 @@ ShellGUI — класс для графического интерфейса, к
 Выполняет команду, введенную пользователем, и отображает результат.<br/>
 
 
-### Форматы данных <br/>
-
+### 4. Форматы данных <br/>
 #### Конфигурационный файл (config.xml)<br/>
-
 Пример:<br/>
 ```xml
 <config>
@@ -76,16 +74,16 @@ ShellGUI — класс для графического интерфейса, к
 #### Файловая система (tar-архив)<br/>
 Файлы и директории должны быть в tar-архиве, который эмулятор загружает при запуске.
 #### Структура проекта:<br/>
-config.xml — конфигурационный файл.<br/>
-emulator.py — основной файл с эмулятором.<br/>
-test_emulator.py — файл с юнит-тестами.<br/>
+`config.xml` — конфигурационный файл.<br/>
+`emulator.py` — основной файл с эмулятором.<br/>
+`test_emulator.py` — файл с юнит-тестами.<br/>
 #### Команды для сборки проекта<br/>
 Скрипт использует стандартные библиотеки, поэтому дополнительных зависимостей не требуется.<br/>
 ZIP-файл, содержащий нужные файлы и директории для виртуальной файловой системы.<br/>
 Файл config.xml с необходимыми параметрами.<br/>
 #### Пример работы эмулятора:<br/>
 ![image](https://github.com/user-attachments/assets/835fe67a-495e-41e1-b4ad-817f6640d50f)
-#### Результаты тестов<br/>
+#### 5. Результаты тестов<br/>
 C:\Users\Taisi\PycharmProjects\Config_Dz\.venv\Scripts\python.exe "D:/PyCharm Community Edition 2024.3/plugins/python-ce/helpers/pycharm/_jb_unittest_runner.py" --path C:\Users\Taisi\PycharmProjects\Config_Dz\shell_emulator\test_emulator.py 
 Testing started at 1:44 ...
 Launching unittests with arguments python -m unittest C:\Users\Taisi\PycharmProjects\Config_Dz\shell_emulator\test_emulator.py in C:\Users\Taisi\PycharmProjects\Config_Dz\shell_emulator
