@@ -7,10 +7,7 @@ import xml.etree.ElementTree as ET
 
 
 class ShellEmulator:
-    """
-    Эмулятор shell, работающий с виртуальной файловой системой.
-    """
-
+    # Эмулятор shell, работающий с виртуальной файловой системой.
     def __init__(self, config_path):
         self.load_config(config_path)
         self.current_dir = "/"
@@ -18,18 +15,14 @@ class ShellEmulator:
         self.load_virtual_fs()
 
     def load_config(self, config_path):
-        """
-        Загружает конфигурацию из XML-файла.
-        """
+        # Загружает конфигурацию из XML-файла.
         tree = ET.parse(config_path)
         root = tree.getroot()
         self.username = root.find('username').text
         self.tar_path = root.find('tar_path').text
 
     def load_virtual_fs(self):
-        """
-        Загружает виртуальную файловую систему из tar-архива.
-        """
+        # Загружает виртуальную файловую систему из tar-архива.
         with tarfile.open(self.tar_path, 'r') as tar:
             for member in tar.getmembers():
                 normalized_path = member.name.lstrip("./")
@@ -37,18 +30,13 @@ class ShellEmulator:
                     "is_file": member.isfile(),
                     "content": tar.extractfile(member).read() if member.isfile() else None,
                 }
-        # print("Загруженная файловая система:", self.virtual_fs)  # Отладочный вывод
+
 
     def ls(self):
-        """
-        Список файлов и папок в текущей директории.
-        """
+        # Список файлов и папок в текущей директории.
         items = []
-        # Определяем префикс для текущей директории
         prefix =  self.current_dir.strip("/") + "/" if self.current_dir != "/" else ""
-
         for path in self.virtual_fs.keys():
-            # Учитываем только элементы, которые находятся непосредственно в текущей директории
             if path.startswith(prefix) and path != prefix:
                 relative_path = path[len(prefix):].split("/")[0]
                 if relative_path not in items:
@@ -58,22 +46,17 @@ class ShellEmulator:
 
 
     def cd(self, path):
-        """
-        Переход в указанную директорию.
-        """
+       # Переход в указанную директорию.
         if not path:  # Если аргумент пустой, переход в корень
             self.current_dir = "/"
             return ""
-
         if path == "..":  # Переход на уровень вверх
             self.current_dir = "/".join(self.current_dir.strip("/").split("/")[:-1]) or "/"
         elif path == "/":  # Переход в корень
             self.current_dir = "/"
         else:
-            # Формируем путь для перехода
             new_path = os.path.normpath(os.path.join(self.current_dir, path)).replace("\\", "/")
             new_path = new_path.strip("/")  # Удалить лишние /
-
             # Проверка существования директории
             if new_path in self.virtual_fs and not self.virtual_fs[new_path]["is_file"]:
                 self.current_dir = "/" + new_path
@@ -112,10 +95,7 @@ class ShellEmulator:
 
 
 class ShellGUI:
-    """
-    Графический интерфейс эмулятора.
-    """
-
+    # Графический интерфейс эмулятора.
     def __init__(self, master, emulator):
         self.master = master
         self.emulator = emulator
@@ -127,36 +107,29 @@ class ShellGUI:
         self.prompt()
 
     def prompt(self):
-        """
-        Отображение приглашения для ввода команды.
-        """
+        # Отображение приглашения для ввода команды.
         self.text.insert('end', f"{self.emulator.username}@shell:{self.emulator.current_dir}$ ")
-        self.text.mark_set("insert", "end")  # Устанавливаем курсор в конец
-        self.text.see("end")  # Обновляем область видимости
+        self.text.mark_set("insert", "end")
+        self.text.see("end")
 
     def execute_command(self, event):
-        """
-        Выполнение команды, введенной пользователем.
-        """
-        # Получение строки команды
-        start_index = self.text.index("end-2c linestart")  # Индекс начала текущей строки
-        command_line = self.text.get(start_index, "end-1c").strip()  # Текущий ввод
+        # Выполнение команды, введенной пользователем.
 
-        # Убираем приглашение из команды
+        start_index = self.text.index("end-2c linestart")
+        command_line = self.text.get(start_index, "end-1c").strip()
+
         prompt = f"{self.emulator.username}@shell:{self.emulator.current_dir}$ "
         if command_line.startswith(prompt):
             command = command_line[len(prompt):].strip()
         else:
             command = command_line.strip()
 
-        if not command:  # Если команда пустая
+        if not command:
             return
 
-        # Разделяем команду и её аргументы
         cmd, *args = command.split()
         output = ""
 
-        # Обработка команд
         if cmd == "ls":
             output = self.emulator.ls()
         elif cmd == "cd":
@@ -175,7 +148,6 @@ class ShellGUI:
         else:
             output = f"{cmd}: command not found"
 
-        # Вывод результата
         if output:
             self.text.insert("end", "\n" + output)
         self.text.insert("end", "\n")
@@ -183,9 +155,8 @@ class ShellGUI:
 
 
 def main():
-    """
-    Главная функция для запуска эмулятора.
-    """
+    # Главная функция для запуска эмулятора.
+
     import sys
     if len(sys.argv) != 2:
         print("Usage: python emulator.py <config.xml>")
