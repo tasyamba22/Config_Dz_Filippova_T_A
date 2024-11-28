@@ -79,3 +79,21 @@ ShellGUI — класс для графического интерфейса, к
 config.xml — конфигурационный файл.<br/>
 emulator.py — основной файл с эмулятором.<br/>
 test_emulator.py — файл с юнит-тестами.<br/>
+#### Команды для сборки проекта<br/>
+Скрипт использует стандартные библиотеки, поэтому дополнительных зависимостей не требуется.<br/>
+ZIP-файл, содержащий нужные файлы и директории для виртуальной файловой системы.<br/>
+Файл config.xml с необходимыми параметрами.<br/>
+#### Пример работы эмулятора:<br/>
+![image](https://github.com/user-attachments/assets/835fe67a-495e-41e1-b4ad-817f6640d50f)
+#### Результаты тестов<br/>
+C:\Users\Taisi\PycharmProjects\Config_Dz\.venv\Scripts\python.exe "D:/PyCharm Community Edition 2024.3/plugins/python-ce/helpers/pycharm/_jb_unittest_runner.py" --path C:\Users\Taisi\PycharmProjects\Config_Dz\shell_emulator\test_emulator.py 
+Testing started at 1:44 ...
+Launching unittests with arguments python -m unittest C:\Users\Taisi\PycharmProjects\Config_Dz\shell_emulator\test_emulator.py in C:\Users\Taisi\PycharmProjects\Config_Dz\shell_emulator
+
+Ran 12 tests in 0.019s
+
+OK
+
+Process finished with exit code 0
+![image](https://github.com/user-attachments/assets/4a9de8db-1449-4292-a4e0-8b5a2af3c42f)
+
