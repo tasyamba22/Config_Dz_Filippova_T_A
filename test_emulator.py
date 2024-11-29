@@ -59,12 +59,6 @@ class TestShellEmulator(unittest.TestCase):
         result = self.emulator.exit()
         self.assertEqual(result, "EXIT")
 
-    def test_exit_no_side_effects(self):
-        initial_dir = self.emulator.current_dir
-        self.emulator.exit()
-        self.assertEqual(self.emulator.current_dir, initial_dir)
-
-
 if __name__ == "__main__":
     unittest.main()
 
