@@ -89,13 +89,14 @@ python emulator.py config.xml
 ![image](https://github.com/user-attachments/assets/835fe67a-495e-41e1-b4ad-817f6640d50f)
 ## 5. Результаты тестов<br/>
 C:\Users\Taisi\PycharmProjects\Config_Dz\.venv\Scripts\python.exe "D:/PyCharm Community Edition 2024.3/plugins/python-ce/helpers/pycharm/_jb_unittest_runner.py" --path C:\Users\Taisi\PycharmProjects\Config_Dz\shell_emulator\test_emulator.py 
-Testing started at 1:44 ...
+Testing started at 12:24 ...
 Launching unittests with arguments python -m unittest C:\Users\Taisi\PycharmProjects\Config_Dz\shell_emulator\test_emulator.py in C:\Users\Taisi\PycharmProjects\Config_Dz\shell_emulator
 
-Ran 12 tests in 0.019s
+Ran 11 tests in 0.075s
 
 OK
 
 Process finished with exit code 0
-![image](https://github.com/user-attachments/assets/4a9de8db-1449-4292-a4e0-8b5a2af3c42f)
+![image](https://github.com/user-attachments/assets/ff51f8fc-7a20-46f7-917f-065b2481ed2d)
+
 
