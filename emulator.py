@@ -65,9 +65,7 @@ class ShellEmulator:
         return ""
 
     def cat(self, filename):
-        """
-        Читает и выводит содержимое файла.
-        """
+        # Читает и выводит содержимое файла.
         file_path = os.path.normpath(os.path.join(self.current_dir, filename)).replace("\\", "/")
         file_path = file_path.lstrip("./")  # Убираем "./", если есть
         if file_path in self.virtual_fs and self.virtual_fs[file_path]["is_file"]:
@@ -76,21 +74,15 @@ class ShellEmulator:
         return f"cat: {filename}: No such file or directory"
 
     def date(self):
-        """
-        Вывод текущей даты и времени.
-        """
+        # Вывод текущей даты и времени.
         return datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
     def clear(self):
-        """
-        Очищает экран.
-        """
+        # Очищает экран.
         return "CLEAR"
 
     def exit(self):
-        """
-        Завершение работы эмулятора.
-        """
+        # Завершение работы эмулятора.
         return "EXIT"
 
 
